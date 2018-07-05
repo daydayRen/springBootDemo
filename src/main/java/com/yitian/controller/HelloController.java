@@ -1,12 +1,14 @@
 package com.yitian.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.yitian.controller.domain.BookBean;
 /**
@@ -15,11 +17,13 @@ import com.yitian.controller.domain.BookBean;
  * @date 2018年7月5日
  *
  */
-@Controller
+@RestController
 //组合注解
 @SpringBootApplication
 @EnableAutoConfiguration
 public class HelloController {
+	
+	public final static Logger logger = LoggerFactory.getLogger(HelloController.class);	
 	@Autowired
 	private BookBean bookBean;
 	
@@ -27,6 +31,8 @@ public class HelloController {
 	@ResponseBody
 	public String fingBook(){
 		//return new BookBean().sleep();
+		 logger.info("logback-ok");
+		System.out.println(bookBean.getAuthor());
 		return "Hello Spring Boot! The BookName is "+bookBean.getName()+";and Book Author is "+bookBean.getAuthor()+";and Book price is "+bookBean.getPrice();
 	}
 	
