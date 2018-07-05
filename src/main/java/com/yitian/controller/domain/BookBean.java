@@ -1,9 +1,9 @@
 package com.yitian.controller.domain;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 @ConfigurationProperties(prefix = "book",locations = "classpath:book.properties")
 public class BookBean {
 	private String name;
